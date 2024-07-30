@@ -5,10 +5,9 @@ import { changeFilter } from '../../redux/filtersSlice';
 import style from './SearchBox.module.css';
 
 const SearchBox = () => {
-  const id = nanoid();
-
   const dispatch = useDispatch();
   const filter = useSelector(selectNameFilter);
+  const id = nanoid();
 
   const handleFilterChange = filter => dispatch(changeFilter(filter));
 
