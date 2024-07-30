@@ -1,8 +1,16 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
+import { selectNameFilter } from '../../redux/selectors';
+import { changeFilter } from '../../redux/filtersSlice';
 import style from './SearchBox.module.css';
 
-const SearchBox = ({ value, onFilter }) => {
+const SearchBox = () => {
   const id = nanoid();
+
+  const dispatch = useDispatch();
+  const filter = useSelector(selectNameFilter);
+
+  const handleFilterChange = filter => dispatch(changeFilter(filter));
 
   return (
     <div className={style.wrap}>
@@ -13,9 +21,9 @@ const SearchBox = ({ value, onFilter }) => {
         name='filter'
         id={`filter-${id}`}
         autoComplete='on'
-        value={value}
+        value={filter}
         onChange={e => {
-          onFilter(e.target.value);
+          handleFilterChange(e.target.value);
         }}
       />
     </div>

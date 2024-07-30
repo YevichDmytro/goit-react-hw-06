@@ -1,12 +1,16 @@
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { useDispatch } from 'react-redux';
 import { FaUser } from 'react-icons/fa';
 import { BsFillTelephoneFill } from 'react-icons/bs';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { deleteContact } from '../../redux/contactsSlice';
 import style from './Contact.module.css';
 
-const Contact = ({ contactName, contactNumber, contactId, onDelete }) => {
+const Contact = ({ contactName, contactNumber, contactId }) => {
+  const dispatch = useDispatch();
+
   const handleDelete = () => {
-    onDelete(contactId);
+    dispatch(deleteContact(contactId));
   };
 
   return (
@@ -23,9 +27,7 @@ const Contact = ({ contactName, contactNumber, contactId, onDelete }) => {
       </ul>
       <div>
         <Button
-          onClick={() => {
-            handleDelete();
-          }}
+          onClick={() => handleDelete()}
           variant='outlined'
           startIcon={<DeleteIcon />}
         >
