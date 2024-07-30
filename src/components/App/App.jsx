@@ -10,6 +10,9 @@ const App = () => {
       <ContactForm />
       <SearchBox />
       <ContactList />
+      <ContactForm />
+      <SearchBox />
+      <ContactList />
     </div>
   );
 };

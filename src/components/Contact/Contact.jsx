@@ -5,6 +5,11 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteContact } from '../../redux/contactsSlice';
 import style from './Contact.module.css';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/contactsSlice';
+
+const Contact = ({ contactName, contactNumber, contactId }) => {
+  const dispatch = useDispatch();
 
 const Contact = ({ contactName, contactNumber, contactId }) => {
   const dispatch = useDispatch();
@@ -27,6 +32,7 @@ const Contact = ({ contactName, contactNumber, contactId }) => {
       </ul>
       <div>
         <Button
+          onClick={() => handleDelete()}
           onClick={() => handleDelete()}
           variant='outlined'
           startIcon={<DeleteIcon />}
