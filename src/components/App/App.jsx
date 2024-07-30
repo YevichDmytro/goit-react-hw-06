@@ -1,50 +1,58 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import SearchBox from '../SearchBox/SearchBox';
-import defaultContactsList from '../../contacts.json';
-import { nanoid } from 'nanoid';
+// import defaultContactsList from '../../contacts.json';
+// import { nanoid } from 'nanoid';
 import style from './App.module.css';
 
 const App = () => {
-  const [contacts, setContacts] = useState(() => {
-    const savedPhoneBook = localStorage.getItem('phone-book');
+  // const [contacts, setContacts] = useState(() => {
+  //   const savedPhoneBook = localStorage.getItem('phone-book');
 
-    if (savedPhoneBook !== null) {
-      return JSON.parse(savedPhoneBook);
-    }
+  //   if (savedPhoneBook !== null) {
+  //     return JSON.parse(savedPhoneBook);
+  //   }
 
-    return defaultContactsList;
-  });
-  const [filter, setFilter] = useState('');
+  //   return defaultContactsList;
+  // });
+  // const [filter, setFilter] = useState('');
 
-  const addContact = newContact => {
-    newContact.id = nanoid();
-    setContacts(prevContacts => {
-      return [...prevContacts, newContact];
-    });
-  };
+  // const addContact = newContact => {
+  //   newContact.id = nanoid();
+  //   setContacts(prevContacts => {
+  //     return [...prevContacts, newContact];
+  //   });
+  // };
 
-  const deleteContact = contactId => {
-    setContacts(prevContacts =>
-      prevContacts.filter(contact => contact.id !== contactId)
-    );
-  };
+  // const deleteContact = contactId => {
+  //   setContacts(prevContacts =>
+  //     prevContacts.filter(contact => contact.id !== contactId)
+  //   );
+  // };
 
-  const filterContact = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  // const filterContact = contacts.filter(contact =>
+  //   contact.name.toLowerCase().includes(filter.toLowerCase())
+  // );
 
-  useEffect(() =>
-    localStorage.setItem('phone-book', JSON.stringify(contacts), [contacts])
-  );
+  // useEffect(() =>
+  //   localStorage.setItem('phone-book', JSON.stringify(contacts), [contacts])
+  // );
 
+  // return (
+  //   <div className={style.wrap}>
+  //     <h1>Phonebook</h1>
+  //     <ContactForm onAdd={addContact} />
+  //     <SearchBox value={filter} onFilter={setFilter} />
+  //     <ContactList value={filterContact} onDelete={deleteContact} />
+  //   </div>
+  // );
   return (
     <div className={style.wrap}>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={addContact} />
-      <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList value={filterContact} onDelete={deleteContact} />
+      <ContactForm />
+      <SearchBox />
+      <ContactList />
     </div>
   );
 };
